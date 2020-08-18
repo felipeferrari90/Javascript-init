@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="~pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos</title>
+    <style>
+        body{
+            padding: 50px;
+        }
+        h1, h2{
+            text-align: center;
+        }
+        .quadrado{
+            width: 100px;
+            height: 100px;
+            padding: 15px;  
+            border: 1px dashed black;
+        }
+        .red{
+            background-color: red;
+        }
+        .blue{
+            background-color: blue;
+        }
+        .green{
+            background-color: green;
+        }
+        .yellow{
+            background-color: yellow;
+        }
+    
+    </style>
+</head>
+
+<body>
+
+    <h1>TESTE</h1>
+
+    <hr>
+
+    <h2>Declarando evento no html</h2>
+      
+    <div id="quadrado-6" class="quadrado">Q6</div>
+
+    <h4>
+        ao clicar nessa quadrado o quadrado ira amarelar, hoje em dia colocar eventos inline no html nao
+        é uma pratica recomendada
+    </h4>
+
+    
+
+
+    <script>
+
+        
+            function colorir(e,color){
+                document.getElementById("quadrado-6").classList.add(color);
+            }
+
+            var quadrado6 = document.getElementById("quadrado-6");
+            quadrado6.addEventListener("click", (e) => {
+                colorir(e,"green")
+            });
+
+            document.addEventListener("keydown", (e)=> {
+            const codigo = e.keyCode;    
+            console.log(codigo) });
+
+
+
+    </script>
+
+</body>
+</html>

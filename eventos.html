@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="~pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos</title>
+    <style>
+        body{
+            padding: 50px;
+        }
+        h1, h2{
+            text-align: center;
+        }
+        .quadrado{
+            width: 100px;
+            height: 100px;
+            padding: 15px;  
+            border: 1px dashed black;
+        }
+        .red{
+            background-color: red;
+        }
+        .blue{
+            background-color: blue;
+        }
+        .green{
+            background-color: green;
+        }
+        .yellow{
+            background-color: yellow;
+        }
+        .opaco{
+            background-color:rgba(0, 0, 0, .2)
+        }
+    
+    </style>
+</head>
+
+<body>
+
+    <h1>EVENTOS</h1>
+
+<!-------------------------------- EVENTOS - CHAMADA INLINE NO HTML ----------------------------->
+
+    <hr>
+
+    <h2>Declarando evento no html</h2>
+      
+    <div id="quadrado-1" class="quadrado" onclick="amarelar(this)">Q1</div>
+
+    <h4>
+        ao clicar nessa quadrado o quadrado ira amarelar, hoje em dia colocar eventos inline no html nao
+        é uma pratica recomendada
+    </h4>
+
+    
+
+<!-------------------------------- ROTINAS DE TRATAMENTO DE EVENTO ----------------------------->
+
+    <hr>
+    
+    <h2>Rotinas de tratamento de evento</h2>
+  
+    <div id="quadrado-2" class="quadrado">Q2</div>
+
+    <h4>
+       toda vez que vc clicar nesse quadrado ele vai ganhar e perder sua cor, 
+       seu evento esta sendo tratado por javascript 
+    </h4>
+
+<!-------------------------------- CRIANDO OUVINTE DE EVENTO ----------------------------->
+
+<hr>
+    
+<h2>Ouvintes de evento</h2>
+
+<div id="quadrado-3" class="quadrado">Q3</div>
+
+<h4>
+    ao clicar nesse quadrado ele se pinta de azul e perde a cor depois de 3 segundos
+    no js foi criado um ouvinte de click para ele usando o .addEventListener 
+</h4>
+
+<!----------------------  PARAMETROS COM ROTINA DE TRATAMENTO E OUVINTES DE EVENTO     ---------->
+
+<hr>
+    
+<h2>Parametros com rotina de tratamento e ouvintes de evento</h2>
+
+<div id="quadrado-4" class="quadrado">Q4</div>
+
+<h4>
+    ao passar o mouse nele pula pro centro, nesse caso a gente usa um ouvinte de evento e 
+    passa uma rotina de tratamento(uma funcao anonima) nele.
+</h4>
+
+<!--------------------------------  0 OBJETO EVENT  ----------------------------------------->
+
+<hr>
+    
+<h2>o objeto evento</h2>
+
+<div id="quadrado-5" class="quadrado green">Q5</div>
+<div id="quadrado-6" class="quadrado" style="margin: 0 auto;">Q6</div>
+
+<h4>
+    o quadrado 5 imprime o alvo e o tipo do elemento quando é clicado no console e tira a cor do elemento ,
+    nele colocamos no escopo da funcao, o parametro event que é chamado de boas no ouvinte 
+</h4>    
+
+<h4>
+    o quadrado 6 colore de verde o elemento ao ser clicado e printa no console todas os botoes que vc aperta,
+    no escopo da funcao tem dois parametros (um nao é passado automaticamente) o que torna inviavel fazer
+    todo o procedimento da forma como foi feito no quadrado 5 (a menos que os outros parametros sejam 
+    incializados com algum valor dentro do escopo da funcao, somente o primeiro(event) nao é nulo
+</h4>    
+
+<!-------------------------------------------  DELEGAÇÃO DE EVENTO ---------------------------------------->
+
+<hr>
+    
+<h2>delegação de evento</h2>
+
+<div id="quadrado-7" class="quadrado" style=" width:350px; height:350px; ">Q7
+    <div id="quadrado-7-1" class="quadrado" style=" width:300px; height:300px; text-align:left;">q7-1
+        <div id="quadrado-7-2" class="quadrado" style=" width:100px; height:100px; 
+         position: relative; float: left">q7-2</div>
+        <div id="quadrado-7-3" class="quadrado" style=" width:100px; height:100px; 
+         position: relative; float: right;">q7-3</div>
+        <div id="quadrado-7-4" class="quadrado" style=" width:100px; height:100px;
+         position: relative; float: left">q7-4</div>
+        <div id="quadrado-7-5" class="quadrado" style=" width:100px; height:100px; 
+         position: relative; float: right">q7-5</div>
+    </div>
+</div>
+
+<h4>
+    se vc clicar no quadrado 7-1 vai colorir todos os filhos dele de azul 
+    menos o ultimo filho e o proprio pai, 
+    esse evento foi delegado ao pai, ao inves de criarmos 3 eventos nos filhos, 
+    criamos um no pai e tratamos.
+    delegando ouvintes de eventos no pai evita criar varios ouvintes nos filhos 
+    melhorando a perfomance.
+</h4>
+
+<!--------------------------------ALTERANDO O COMPORTAMENTO PADRAO ---------------------------------------->
+                              <!--preventDefault() e stopPropagation-->
+<hr>
+    
+<h2>alterando o comportamento padrao</h2>
+<h4 style="text-align:center ">preventDefault() e stopPropagation()</h4>
+
+<form> 
+    <input type="text" id="textbox-8-1" placeholder="input COM preventDefault()"/> 
+    <input type="text" id="textbox-8-2" placeholder="input SEM preventDefault()" /> 
+</form>
+
+<a href="https://www.google.com/">LinkSemPreventDefault</a>
+<a href="https://www.google.com/" id="link-1">LinkComPreventDefault</a>
+
+<h4>
+    ao vc digitar algo que nao seja letra minuscula um alert é acionado com o numero do codigo do caractere
+    digitado errado.
+ </h4>
+
+<h4>
+   <strong>preventDefault() - </strong> alguns eventos como links e forms possuem comportamentos padrao
+   como te levar pra outra pagina apos o clique do link ou depois de um submit, entao vc usa essa 
+   funcao pra cancelar esse comportamento default.
+</h4>
+
+
+<!--------------------------------   FLUXO DE EVENTO  ---------------------------------------->
+                            
+<hr>
+
+    <h2>fluxo de evento</h2>   
+
+    <div id="quadrado-9" class="quadrado" style=" width:350px; height:350px; ">
+        Q9
+        <div id="quadrado-9-1" class="quadrado" style=" width:300px; height:300px;">
+            q9-1
+            <div id="quadrado-9-2" class="quadrado" style=" width:250px; height:250px;">
+                q9-2
+                <div id="quadrado-9-3" class="quadrado" style=" width:200px; height:200px;">
+                    q9-3
+                    <div id="quadrado-9-4" class="quadrado" style=" width:150px; height:150px;">
+                        q9-4
+                    </div>
+                </div>  
+            </div>           
+        </div>
+    </div>
+    <button id="botao-9">MODO CAPTURA EVENTO</button>
+
+    <h4>
+        <strong>Propagação de evento</strong> quando vc clica num elemento e ele tem um evento, ele se 
+        propaga até seu pai até o pai do pai (acionando evento de ambos), ate chegar na hierarquia raiz (DOCUMENT)
+    </h4>
+
+    <h4>
+        <b>stopPropagation()</b> - cada quadrado clicado ira se pintar de preto com opacidade 20% e 
+        exibir um alert do caminho percorrido entre os quadrados  porem o quadrado 9-2 parara a propagacao do evento.
+        usando o stopPropagation();
+    </h4>
+
+   
+    <h4>
+        <strong>Captura de evento de evento</strong> quando vc clica num elemento e ele tem um evento, ele se 
+        propaga do DOCUMENT e vai de filho em filho ate chegar no seu elemento (acionando evento de ambos)
+    </h4>
+          
+
+    <h4>
+        quando vc clica no botao vc muda o modo de propagação de eventos para captura de eventos e vice versa
+   </h4>
+    
+<!-- ------------------------------ CRIANDO OUVINTE DE EVENTO --------------------------- -->
+
+   <hr>
+       
+   <h2>Ouvintes de evento</h2>
+   
+   <div id="quadrado-3" class="quadrado">Q3</div>
+   
+   <h4>
+       ao clicar nesse quadrado ele se pinta de azul e perde a cor depois de 3 segundos
+       no js foi criado um ouvinte de click para ele usando o .addEventListener 
+   </h4>
+   
+
+    <script src="eventos.js"></script>
+
+</body>
+</html>
